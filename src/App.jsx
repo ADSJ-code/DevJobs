@@ -1,16 +1,15 @@
-import { Box, Flex } from '@chakra-ui/react';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
-    <Flex direction="column" minHeight="100vh">
-      <Header />
-      <Box as="main" flex="1">
-      </Box>
-      <Footer />
-    </Flex>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        {/* As outras páginas (lista de vagas, detalhes) serão adicionadas aqui depois */}
+      </Routes>
+    </BrowserRouter>
   )
 }
 
-export default App
+export default App;
