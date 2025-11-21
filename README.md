@@ -1,50 +1,96 @@
-# DevJobs - Portal de Vagas
+# DevJobs - Job Board Application
 
-![Prévia do Projeto DevJobs](https://github.com/ADSJ-code/DevJobs/blob/master/Captura%20de%20tela%202025-08-27%20234503.png?raw=true)
+Project Preview(
+    
+https://github.com/ADSJ-code/DevJobs/blob/master/Captura%20de%20tela%202025-08-27%20234503.png?raw=true)
 
-## 🚀 Demo no Ar
+## 🚀 Executive Summary
 
-**Acesse a versão funcional do projeto aqui:** [https://[https://dev-jobs-delta.vercel.app/vagas]](https://[https://dev-jobs-delta.vercel.app/vagas])
+**DevJobs** is a Single Page Application (SPA) designed to demonstrate **production-grade frontend architecture**.
+
+Unlike standard portfolio projects that require local Node.js environments, this application is fully **containerized**. It implements a **Multi-Stage Docker Build** process that compiles the React application and serves it via a high-performance **Nginx** server, ensuring zero-configuration deployment and consistent behavior across any environment.
+
+## ⚡ Quick Start (Run in Minutes)
+
+This project is optimized for Docker. You do **not** need Node.js installed to run this application.
+
+### Prerequisites
+* Docker & Docker Compose
+
+### Installation
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/ADSJ-code/DevJobs
+    ```
+
+2.  **Run with Docker Compose:**
+    ```bash
+    docker-compose up --build
+    ```
+
+3.  **Access the Application:**
+    Open your browser and navigate to: 
+    
+    http://localhost:3000
 
 ---
 
-## 📖 Sobre o Projeto
+## 🏗️ Architecture & Engineering
 
-`DevJobs` é uma plataforma de busca de vagas desenvolvida como um projeto de portfólio. A aplicação simula um portal de empregos, permitindo aos usuários buscar vagas por texto e visualizar os detalhes de cada oportunidade em uma interface limpa e reativa.
+This project goes beyond simple UI development by implementing DevOps best practices for frontend delivery.
+
+### 1. Infrastructure (Docker + Nginx)
+
+* **Multi-Stage Build:** The `Dockerfile` uses a `node:20-alpine` image to build the artifacts and discards it, keeping only the optimized static files.
+
+* **Nginx Server:** A lightweight Alpine Nginx container serves the application.
+
+* **SPA Routing:** Custom `nginx.conf` handles client-side routing (React Router), preventing 404 errors on page refresh by redirecting fallback requests to `index.html`.
+
+* **Performance:** Gzip compression is enabled for text-based assets.
+
+### 2. Internationalization (i18n)
+
+* **Auto-Detection:** The application automatically detects the user's browser language.
+
+* **Support:** Native support for English (`en-US`) and Portuguese (`pt-BR`).
+
+### 3. Tech Stack
+
+* **Core:** React.js (Vite)
+* **Routing:** React Router DOM v6
+* **Styling:** Chakra UI
+* **Containerization:** Docker
+* **Server:** Nginx (Alpine Linux)
 
 ---
 
-## ✨ Funcionalidades
+## ✨ Key Features
 
-- **Busca de Vagas:** Campo de busca funcional na página inicial.
-- **Listagem Dinâmica:** A página de resultados exibe os cards das vagas encontradas.
-- **Roteamento:** Navegação entre 3 rotas distintas (`Home`, `Lista de Vagas`, `Detalhes da Vaga`) usando React Router.
-- **Página de Detalhes:** Rota dinâmica (`/vaga/:id`) que exibe informações completas de uma vaga específica.
-- **Componentização:** O projeto é estruturado com componentes reutilizáveis como Header, Footer e JobCard.
+* **Job Search:** Real-time filtering by title and metadata.
 
----
+* **Dynamic Routing:** Deep linking support for job details (`/vaga/:id`).
 
-## 🛠️ Tecnologias Utilizadas
+* **Responsive Design:** Fully adaptive layout for Mobile and Desktop.
 
-- **React.js** (com Vite)
-- **Chakra UI** (Para a biblioteca de componentes e estilização)
-- **React Router DOM v6** (Para o roteamento)
-- **Git & GitHub** (Para versionamento de código)
-- **Vercel** (Para o deploy)
+* **Component-Based Architecture:** Reusable components (JobCard, Header) for maintainability.
 
 ---
 
-## ⚙️ Como Executar o Projeto Localmente
+## 🔧 Local Development (Optional)
+
+If you wish to modify the code without Docker:
+
+
+# Install dependencies
 
 ```bash
-# 1. Clone o repositório
-git clone [https://github.com/](https://github.com/)[https://github.com/ADSJ-code/DevJobs.git]/DevJobs.git
-
-# 2. Navegue para a pasta do projeto
-cd DevJobs
-
-# 3. Instale as dependências
 npm install
+```
 
-# 4. Inicie o servidor de desenvolvimento
+# Run dev server
+
+```bash
 npm run dev
+```
