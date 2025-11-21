@@ -94,3 +94,10 @@ If you wish to modify the code without Docker:
 # Install dependencies
 ```bash
 npm install
+```
+
+and
+
+```bash
+npm run dev
+```
